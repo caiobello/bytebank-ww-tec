@@ -44,6 +44,7 @@ public class ContaCorrente {
         if (valorTransferencia <= 0) {
             throw new IllegalArgumentException("O valor da transferência está inválido. O valor deve ser positivo.");
         }
+
         if (this.saldo < valorTransferencia) {
             throw new IllegalArgumentException("Saldo Insuficiente");
         }
