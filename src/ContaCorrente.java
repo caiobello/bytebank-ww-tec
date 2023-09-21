@@ -28,6 +28,7 @@ public class ContaCorrente {
             this.saldo -= valorSaque;
         }
     }
+
     public void depositar(double valorDeposito) {
         if (valorDeposito > 0) {
             this.saldo += valorDeposito;
@@ -44,14 +45,11 @@ public class ContaCorrente {
         if (valorTransferencia <= 0) {
             throw new IllegalArgumentException("O valor da transferência está inválido. O valor deve ser positivo.");
         }
-
         if (this.saldo < valorTransferencia) {
             throw new IllegalArgumentException("Saldo Insuficiente");
         }
-
         this.saldo -= valorTransferencia;
         contaDestino.setSaldo(contaDestino.getSaldo() + valorTransferencia);
-
     }
 
     public int getNumeroConta() {

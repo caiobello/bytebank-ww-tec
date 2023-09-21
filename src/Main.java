@@ -1,14 +1,15 @@
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        ContaCorrente conta1 = new ContaCorrente(777, 1, "Luan Rosa", "123.456.789-00");
-        ContaCorrente conta2 = new ContaCorrente(369, 1, "Maria Poeta", "987.654.321-00");
+        ContaCorrente conta1 = new ContaCorrente(111, 1, "Luan Rosa", "123.456.789-00");
+        ContaCorrente conta2 = new ContaCorrente(222, 1, "Maria Peralta", "987.654.321-00");
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Saldo inicial da conta 1: " + conta1.getSaldo());
-
 
         conta1.setSaldo(1000.0);
         System.out.println("Novo saldo da conta 1 após setar o saldo: " + decimalFormat.format(conta1.getSaldo()));
@@ -22,7 +23,10 @@ public class Main {
         conta2.setSaldo(500.0);
         System.out.println("Novo saldo da conta 2 após setar o saldo: " + decimalFormat.format(conta2.getSaldo()));
 
-        double valorTransferencia = 100;
+        System.out.println("Digite o valor da transferencia da Conta 1, para Conta 2: ");
+        double valorTransferencia = scanner.nextDouble();
+
+
         conta1.transferir(conta2, valorTransferencia);
         System.out.println("\nTransferência da conta 1 de R$" + valorTransferencia + " para conta2 numero: " + conta2.getNumeroConta());
         System.out.println("Saldo atual da conta 1 após transferência: " + decimalFormat.format(conta1.getSaldo()));
