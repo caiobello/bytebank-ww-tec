@@ -17,28 +17,43 @@ public class ContaCorrente {
         this.numeroAgencia = agencia;
     }
 
-    public void sacar(double valorSaque) {
-        if (valorSaque <= this.saldo) {
-            this.saldo -= valorSaque;
+    public void sacar(double valorSaque) throws IllegalArgumentException {
+        if (valorSaque <= 0) {
+            throw new IllegalArgumentException("Valor de saque inválido. O valor deve ser positivo.");
+        }
+
+        if (valorSaque <= (saldo + limiteChequeEspecial)) {
+            saldo -= valorSaque;
+        } else {
+            throw new IllegalArgumentException("Saldo insuficiente para realizar o saque.");
         }
     }
 
-    public void sacar(double valorSaque, String motivoDoSaque) {
-        if (valorSaque <= this.saldo) {
-            this.saldo -= valorSaque;
+
+    public void sacar(double valorSaque, String motivoDoSaque) throws IllegalArgumentException {
+        if (valorSaque <= 0) {
+            throw new IllegalArgumentException("Valor de saque inválido. O valor deve ser positivo.");
+        }
+
+        if (valorSaque <= (saldo + limiteChequeEspecial)) {
+            saldo -= valorSaque;
+        } else {
+            throw new IllegalArgumentException("Saldo insuficiente para realizar o saque.");
         }
     }
 
-    public void depositar(double valorDeposito) {
-        if (valorDeposito > 0) {
-            this.saldo += valorDeposito;
+    public void depositar(double valorDeposito) throws IllegalArgumentException {
+        if (valorDeposito <= 0) {
+            throw new IllegalArgumentException("Valor de depósito inválido. O valor deve ser positivo.");
         }
+        saldo += valorDeposito;
     }
 
-    public void depositar(double valorDeposito, String motivoDoSaque) {
-        if (valorDeposito > 0) {
-            this.saldo += valorDeposito;
+    public void depositar(double valorDeposito, String motivoDoDeposito) throws IllegalArgumentException {
+        if (valorDeposito <= 0) {
+            throw new IllegalArgumentException("Valor de depósito inválido. O valor deve ser positivo.");
         }
+        saldo += valorDeposito;
     }
 
     public void transferir(ContaCorrente contaDestino, double valorTransferencia) {
