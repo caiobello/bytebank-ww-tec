@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        ContaCorrente conta1 = new ContaCorrente(111, 1, "Luan Rosa", "123.456.789-00");
+        Conta conta1 = new ContaCorrente(111, 1, "Luan Rosa", "123.456.789-00");
         ContaCorrente conta2 = new ContaCorrente(222, 1, "Maria Peralta", "987.654.321-00");
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         Scanner scanner = new Scanner(System.in);
