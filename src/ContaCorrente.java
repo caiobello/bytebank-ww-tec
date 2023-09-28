@@ -56,7 +56,7 @@ public class ContaCorrente extends Conta {
         if (valorTransferencia <= 0) {
             throw new IllegalArgumentException("O valor da transferência está inválido. O valor deve ser positivo.");
         }
-        if (getSaldo() < valorTransferencia) {
+        if (getSaldo() + limiteChequeEspecial < valorTransferencia) {
             throw new IllegalArgumentException("Saldo Insuficiente");
         }
         setSaldo( getSaldo() - valorTransferencia );
