@@ -47,7 +47,7 @@ public class ContaPoupanca extends Conta {
     }
 
     @Override
-    public void transferir(ContaCorrente contaDestino, double valorTransferencia) throws IllegalArgumentException {
+    public void transferir(Conta contaDestino, double valorTransferencia) throws IllegalArgumentException {
         if (valorTransferencia <= 0) {
             throw new IllegalArgumentException("O valor da transferência está inválido. O valor deve ser positivo.");
         }
@@ -56,18 +56,9 @@ public class ContaPoupanca extends Conta {
         }
         setSaldo(getSaldo() - valorTransferencia);
         contaDestino.setSaldo(contaDestino.getSaldo() + valorTransferencia);
+
     }
-    @Override
-    public void transferir(ContaPoupanca contaDestino, double valorTransferencia) throws IllegalArgumentException {
-        if (valorTransferencia <= 0) {
-            throw new IllegalArgumentException("O valor da transferência está inválido. O valor deve ser positivo.");
-        }
-        if (getSaldo() < valorTransferencia) {
-            throw new IllegalArgumentException("Saldo Insuficiente");
-        }
-        setSaldo(getSaldo() - valorTransferencia);
-        contaDestino.setSaldo(contaDestino.getSaldo() + valorTransferencia);
-    }
+
 }
 
 

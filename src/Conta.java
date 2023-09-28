@@ -64,7 +64,6 @@ public abstract class Conta {
 
     public abstract void depositar(double valorDeposito, String motivoDoDeposito) throws IllegalArgumentException;
 
-    public abstract void transferir(ContaCorrente contaDestino, double valorTransferencia);
+    public abstract void transferir(Conta contaDestino, double valorTransferencia);
 
-    public abstract void transferir(ContaPoupanca contaDestino, double valorTransferencia);
 }

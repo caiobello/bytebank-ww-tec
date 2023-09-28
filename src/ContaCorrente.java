@@ -1,11 +1,12 @@
-public class ContaCorrente extends Conta{
+public class ContaCorrente extends Conta {
 
 
     private double limiteChequeEspecial = 0;
 
 
-    ContaCorrente(int numeroConta, int numeroAgencia, String nomeDoTitular, String cpfCnpj) {
+    ContaCorrente(int numeroConta, int numeroAgencia, String nomeDoTitular, String cpfCnpj, double limiteChequeEspecial) {
         super(numeroConta, numeroAgencia, nomeDoTitular, cpfCnpj);
+        this.limiteChequeEspecial = limiteChequeEspecial;
     }
 
 
@@ -51,7 +52,7 @@ public class ContaCorrente extends Conta{
     }
 
     @Override
-    public void transferir(ContaCorrente contaDestino, double valorTransferencia) throws IllegalArgumentException {
+    public void transferir(Conta contaDestino, double valorTransferencia) throws IllegalArgumentException {
         if (valorTransferencia <= 0) {
             throw new IllegalArgumentException("O valor da transferência está inválido. O valor deve ser positivo.");
         }
@@ -59,18 +60,6 @@ public class ContaCorrente extends Conta{
             throw new IllegalArgumentException("Saldo Insuficiente");
         }
         setSaldo( getSaldo() - valorTransferencia );
-        contaDestino.setSaldo(contaDestino.getSaldo() + valorTransferencia);
-    }
-
-    @Override
-    public void transferir(ContaPoupanca contaDestino, double valorTransferencia) throws IllegalArgumentException {
-        if (valorTransferencia <= 0) {
-            throw new IllegalArgumentException("O valor da transferência está inválido. O valor deve ser positivo.");
-        }
-        if (getSaldo() < valorTransferencia) {
-            throw new IllegalArgumentException("Saldo Insuficiente");
-        }
-        setSaldo(getSaldo() - valorTransferencia);
         contaDestino.setSaldo(contaDestino.getSaldo() + valorTransferencia);
     }
 
